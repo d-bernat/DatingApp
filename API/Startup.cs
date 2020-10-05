@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -12,7 +13,7 @@ namespace API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
         }
@@ -49,7 +50,7 @@ namespace API
 
         private void SetupHealthCheck(IServiceCollection services)
         {
-            services.AddHealthChecks().AddSqlServer(Configuration["ConnectionStrings:AppDatabase"], name: "Dating App Database");
+            services.AddHealthChecks().AddSqlServer(Environment.ExpandEnvironmentVariables(Configuration["ConnectionStrings:AppDatabase"]), name: "Dating App Database");
         }
 
         private static void SetupHealthCheckOption(IApplicationBuilder app)

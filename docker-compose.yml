@@ -8,6 +8,10 @@ services:
     build:
       context: .
       dockerfile: API/Dockerfile
+    environment:
+        DATING_APP_DB_USER: "SA"
+        DATING_APP_DB_PASSWORD: "!Westwest6708030802"
+        DATING_APP_DB_INITIAL_CATALOG: "AppDating"
   ms-sql-server:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     environment:
