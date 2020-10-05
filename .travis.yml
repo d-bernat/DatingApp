@@ -5,7 +5,7 @@ env:
    global:
       - SHA=$(git rev-parse HEAD)
 before_install:
-   - echo "DOCKERHUB_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
    - docker build -t dbernat/dating-app-api:latest -t dbernat/dating-app-api:$SHA -f ./API/Dockerfile ./API
 deploy:
    - provider: script
