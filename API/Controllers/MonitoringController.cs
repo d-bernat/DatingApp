@@ -10,6 +10,6 @@ namespace API.Controllers
     {
         [HttpGet]
         [Route("Alive")]
-        public string Get() => "OK";
+        public string Get() => "OK :-)";
     }
 }
