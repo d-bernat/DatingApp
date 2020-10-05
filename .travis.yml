@@ -1,0 +1,12 @@
+sudo: required
+services:
+	- docker
+env: 
+	global:
+		-SHA=$(git rev-parse HEAD)
+deploy:
+	- provider: script
+	  script: bash ./deploy.SHA=$
+	  skip_cleanup: true
+	  on:
+		branch: master
