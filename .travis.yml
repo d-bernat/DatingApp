@@ -1,13 +1,15 @@
 sudo: required
-language: csharp
 services:
    - docker
 env: 
    global:
       - SHA=$(git rev-parse HEAD)
+before_install:
+   - echo "DOCKERHUB_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+   - docker build -t dbernat/dating-app-api:latest -t dbernat/dating-app-api:$SHA -f ./API/Dockerfile ./API
 deploy:
    - provider: script
      script: bash ./deploy.sh
      skip_cleanup: true
      on:
-     branch: master
+        branch: master
