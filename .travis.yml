@@ -1,12 +1,12 @@
 sudo: required
 services:
-	- docker
+   - docker
 env: 
-	global:
-		-SHA=$(git rev-parse HEAD)
+   global:
+      - SHA=$(git rev-parse HEAD)
 deploy:
-	- provider: script
-	  script: bash ./deploy.sh
-	  skip_cleanup: true
-	  on:
-		branch: master
+   - provider: script
+     script: bash ./deploy.sh
+	 skip_cleanup: true
+	 on:
+	    branch: master
