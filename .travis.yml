@@ -7,6 +7,6 @@ env:
 deploy:
    - provider: script
      script: bash ./deploy.sh
-	 skip_cleanup: true
-	 on:
-	    branch: master
+     skip_cleanup: true
+     on:
+     branch: master
